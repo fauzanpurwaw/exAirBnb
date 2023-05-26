@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="flex justify-between items-center gap-4 text-sm">
-                <a href="">Jadikan rumah Anda Airbnb</a>
+                <a href="" class="hidden sm:block">Jadikan rumah Anda Airbnb</a>
                 <a href=""><span><img src="/svg/globe.svg" alt="" class="h-5 inline"></span></a>
                 <DropdownMenu />
             </div>
