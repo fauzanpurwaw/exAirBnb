@@ -7,8 +7,8 @@
         <div class="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5 w-full">
             <div class="flex flex-col gap-3 rounded hover:cursor-pointer">
                 <img src="/img/logemet/logemet1.png" alt="" class="w-full hover:saturate-150">
-                <h3 class="text-[13px] text-gray-500 mt-1">
-                    <span class="p-2 text-[12px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
+                <h3 class="text-[13px] text-gray-500 mt-1 mr-4">
+                    <span class="p-1 text-[10px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
                     Toledo
                 </h3>
                 <h2 class="font-bold">2 Nights PACKAGE All Inclusive</h2>
@@ -17,8 +17,8 @@
             </div>
             <div class="flex flex-col gap-3 rounded hover:cursor-pointer">
                 <img src="/img/logemet/logemet1.png" alt="" class="w-full hover:saturate-150">
-                <h3 class="text-[13px] text-gray-500 mt-1">
-                    <span class="p-2 text-[12px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
+                <h3 class="text-[13px] text-gray-500 mt-1 mr-4">
+                    <span class="p-1 text-[10px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
                     Toledo
                 </h3>
                 <h2 class="font-bold">2 Nights PACKAGE All Inclusive</h2>
@@ -27,8 +27,8 @@
             </div>
             <div class="flex flex-col gap-3 rounded hover:cursor-pointer">
                 <img src="/img/logemet/logemet1.png" alt="" class="w-full hover:saturate-150">
-                <h3 class="text-[13px] text-gray-500 mt-1">
-                    <span class="p-2 text-[12px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
+                <h3 class="text-[13px] text-gray-500 mt-1 mr-4">
+                    <span class="p-1 text-[10px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
                     Toledo
                 </h3>
                 <h2 class="font-bold">2 Nights PACKAGE All Inclusive</h2>
@@ -37,8 +37,8 @@
             </div>
             <div class="flex flex-col gap-3 rounded hover:cursor-pointer">
                 <img src="/img/logemet/logemet1.png" alt="" class="w-full hover:saturate-150">
-                <h3 class="text-[13px] text-gray-500 mt-1">
-                    <span class="p-2 text-[12px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
+                <h3 class="text-[13px] text-gray-500 mt-1 mr-4">
+                    <span class="p-1 text-[10px] border-2 border-rose-500 text-rose-500 rounded font-bold hover:bg-rose-500 hover:text-white hover:cursor-pointer">SUPERHOST</span>
                     Toledo
                 </h3>
                 <h2 class="font-bold">2 Nights PACKAGE All Inclusive</h2>

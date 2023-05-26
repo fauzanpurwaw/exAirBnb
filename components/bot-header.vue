@@ -128,11 +128,7 @@
                     <span class="text-sm">Berkemah</span>
                 </div>
             </div>
-            <button
-                class="flex flex-row items-center filter min-w-fit h-6 pl-3 pr-4 py-6 border border-gray-300 rounded-2xl font-normal">
-                <img src="/svg/adjust.svg" alt="" class="h-5 mx-1">
-                <p>Filter</p>
-            </button>
+            <FilterModal :filterOpen="false"/>
         </div>
     </div>
 </template>

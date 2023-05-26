@@ -36,10 +36,12 @@ div::-webkit-scrollbar {
 }
 
 ::-webkit-scrollbar-thumb {
+    @apply rounded-full;
     @apply bg-red-bnb;
 }
 
 div::-webkit-scrollbar-thumb {
+    @apply rounded-full;
     @apply bg-red-bnb;
 }
 
@@ -47,4 +49,19 @@ div::-webkit-scrollbar-thumb {
     @apply bg-red-400 absolute;
     z-index: 99;
     top: 10px;
+}
+
+/* transition */
+.v-enter-active {
+    transition: all 0.3s ease-out;
+}
+
+.v-leave-active {
+    transition: all 0.1s cubic-bezier(1, 0.75, 0.8, 1);
+}
+
+.v-enter-from,
+.v-leave-to {
+    transform: translateX(30px);
+    opacity: 0;
 }
