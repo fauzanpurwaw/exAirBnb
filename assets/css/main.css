@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* custom utilities */
+html {
+    scroll-behavior: smooth;
+}
+
+.card {
+    @apply shadow-lg border rounded-xl;
+}
+
+.bnb-btn {
+    @apply rounded text-white text-xs font-semibold;
+    background: #FF5A5F;
+}
+
+.bg-red-bnb {
+    background: #FF5A5F;
+}
+
+.text-small {
+    font-size: 14px;
+}
+
+::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+}
+
+div::-webkit-scrollbar {
+    display: block;
+    height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-red-bnb;
+}
+
+div::-webkit-scrollbar-thumb {
+    @apply bg-red-bnb;
+}
+
+.user-dropdown {
+    @apply bg-red-400 absolute;
+    z-index: 99;
+    top: 10px;
+}
