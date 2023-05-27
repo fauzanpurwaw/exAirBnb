@@ -6,6 +6,7 @@
 /* custom utilities */
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .card {
@@ -53,7 +54,7 @@ div::-webkit-scrollbar-thumb {
 
 /* transition */
 .v-enter-active {
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .v-leave-active {

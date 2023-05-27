@@ -14,10 +14,10 @@
                     <div
                         class="flex flex-col items-center bg-white sm:h-[90vh] h-full w-full max-w-[800px] rounded-xl shadow-xl px-5 z-[2]">
                         <div class="flex items-center w-full h-[10%] border-b rounded-t-xl relative">
+                            <div class="text-lg font-semibold w-full text-center ml-5">Filter</div>
                             <button @click="filterOpen = false, clearDataFilter()"
                                 class="opacity-75 hover:opacity-100"><span><img src="/svg/close.svg" alt=""
-                                        class="h-5"></span></button>
-                            <div class="text-lg font-semibold w-full text-center mr-5">Filter</div>
+                                        class="h-6"></span></button>
                         </div>
                         <div class="flex flex-col h-[80%] w-full overflow-y-auto py-4">
                             <div>
@@ -97,9 +97,6 @@
                             </div>
                         </div>
                         <div class="flex justify-between items-center w-full h-[10%] rounded-b-xl border-t">
-                            <div class="flex">
-                                <button @click="clearDataFilter" class=" font-semibold border border-black rounded-full px-3 hover:bg-black hover:text-white">Clear</button>
-                            </div>
                             <div class="grid grid-cols-2 gap-4 w-full max-w-[580px]">
                                 <div class="text-[12px]">
                                     Price Range : 
@@ -122,6 +119,7 @@
                                     <span class="font-semibold">{{ picked.toilet }} </span>
                                 </div>
                             </div>  
+                                <button @click="clearDataFilter" class=" font-semibold border border-black rounded-full px-5 py-1 text-xl hover:bg-black hover:text-white">Clear</button>
                         </div>
                     </div>
                 </div>
