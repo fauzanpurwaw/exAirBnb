@@ -13,13 +13,13 @@
                     </div>
                     <div
                         class="flex flex-col items-center bg-white sm:h-[90vh] h-full w-full max-w-[800px] rounded-xl shadow-xl px-5 z-[2]">
-                        <div class="flex items-center w-full h-[10%] rounded-t-xl relative">
+                        <div class="flex items-center w-full h-[10%] border-b rounded-t-xl relative">
                             <button @click="filterOpen = false, clearDataFilter()"
                                 class="opacity-75 hover:opacity-100"><span><img src="/svg/close.svg" alt=""
                                         class="h-5"></span></button>
                             <div class="text-lg font-semibold w-full text-center mr-5">Filter</div>
                         </div>
-                        <div class="flex flex-col border h-[80%] w-full overflow-y-auto py-4">
+                        <div class="flex flex-col h-[80%] w-full overflow-y-auto py-4">
                             <div>
                                 <h2 class="text-2xl font-semibold text-slate-800">Price range</h2>
                                 <p class="text-lg text-slate-600 font-light">The average nightly price is Rp1,145,983, not
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center w-full h-[10%] rounded-b-xl">
+                        <div class="flex justify-between items-center w-full h-[10%] rounded-b-xl border-t">
                             <div class="flex">
                                 <button @click="clearDataFilter" class=" font-semibold border border-black rounded-full px-3 hover:bg-black hover:text-white">Clear</button>
                             </div>
@@ -171,17 +171,17 @@ export default {
             if (!this.property.checked.includes(a)) {
                     this.property.checked.push(a);
                 }
-                console.log(this.property.checked)
+                // console.log(this.property.checked)
         },
         uncheckType(a) {
             for (let i=0; i<this.property.checked.length;i++) {
                 if (this.property.checked[i] == a) {
                     this.property.checked.splice(i,1);
-                    console.log(a);
-                    console.log(this.property.checked);
+                    // console.log(a);
+                    // console.log(this.property.checked);
                 }
-                console.log(a);
-                console.log(this.property.checked);
+                // console.log(a);
+                // console.log(this.property.checked);
             }
         }
     }
