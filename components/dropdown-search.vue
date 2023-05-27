@@ -32,7 +32,7 @@
                                     <img src="/img/magnifying-glass.png" alt="" class="h-5 inline">
                                 </span>
                                 <input type="text" name="" id="searchInput"
-                                    class="py-2 px-3 sm:w-[300px] w-[390px] text-small text-slate-500"
+                                    class="py-2 px-3 sm:w-[300px] w-[35vh] text-small text-slate-500 accent-rose-400"
                                     placeholder="Cari Disini...">
                                 </div>
                                 <button class="p-2 rounded-full hover:bg-rose-100 mx-1" @click="toggleSearch = !toggleSearch"><img src="/svg/close.svg" alt="" class="h-5"></button>
