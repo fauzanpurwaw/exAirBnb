@@ -22,7 +22,7 @@
         <div class="flex h-screen w-screen absolute top-0 right-0 cursor-default" v-show="toggleSearch">
             <div class="absolute h-screen w-screen z-[1]" @click="toggleSearch = !toggleSearch"></div>
             <div
-                class="relative flex bg-white h-fit sm:w-[400px] w-full py-3 px-2 lg:left-[162px] sm:left-[90px] left-0 sm:mx-0 mx-2 top-[14px] rounded-xl z-[99]">
+                class="relative flex bg-white h-fit sm:w-[400px] w-full py-3 px-2 lg:left-[162px] sm:left-[90px] left-0 sm:mx-0 mx-2 top-[5px] rounded-xl z-[99]">
                 <div class="flex flex-col w-full">
                     <label for="searchInput">
                         <div
