@@ -1,6 +1,6 @@
 <template>
     <div class="hidden flex-col gap-5 text-slate-800 mt-12 sm:flex">
-        <div class="flex flex-col w-full lg:h-[46vh] sm:h-[40vh] mb-16 h-[10vh] duration-1000
+        <div class="flex flex-col w-full lg:h-[46vh] sm:h-[40vh] mb-20 h-[10vh] duration-1000
         justify-between items-center bg-[url('/img/hero.png')] bg-no-repeat bg-center sm:px-2">
             <div class="flex justify-center items-center h-full text-3xl font-bold text-white">
                 Welcome, <span class="text-rose-400">guest</span> !
@@ -12,7 +12,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Lokasi
                             <input type="text" placeholder="Pilih destinasi" id="orderLokasi"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-1000 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col border-r border-rose-400 lg:pr-3 pr-1 lg:ml-3 ml-1">
@@ -20,7 +20,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Check In
                             <input type="text" placeholder="mm/dd/yy" id="orderCheckIn"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-1000 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col border-r border-rose-400 lg:pr-3 pr-1 lg:ml-3 ml-1">
@@ -28,7 +28,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Check Out
                             <input type="text" placeholder="mm/dd/yy" id="orderCheckOut"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-1000 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col lg:pr-3 pr-1 lg:ml-3 ml-1">
@@ -36,7 +36,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Tamu
                             <input type="text" placeholder="mm/dd/yy" id="orderTamu"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-1000 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col">

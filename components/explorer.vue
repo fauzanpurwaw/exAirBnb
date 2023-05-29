@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-5 mt-12 text-slate-700 ">
+    <div class="flex flex-col gap-5 mt-16 text-slate-700 ">
         <h1 class="text-xl font-bold">Explorer Airbnb</h1>
         <div class="flex justify-start gap-6 overflow-x-auto py-2">
             <div class="border h-20 flex items-center min-w-[380px] rounded-xl hover:shadow hover:cursor-pointer">
