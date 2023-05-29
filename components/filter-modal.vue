@@ -19,7 +19,7 @@
                                 class="opacity-75 hover:opacity-100"><span><img src="/svg/close.svg" alt=""
                                         class="h-6"></span></button>
                         </div>
-                        <div class="flex flex-col h-[80%] w-full overflow-y-auto py-4">
+                        <div class="flex flex-col h-[80%] w-full overflow-y-auto">
                             <div>
                                 <h2 class="text-2xl font-semibold text-slate-800">Price range</h2>
                                 <p class="text-lg text-slate-600 font-light">The average nightly price is Rp1,145,983, not

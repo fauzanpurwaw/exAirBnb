@@ -1,6 +1,6 @@
 <template>
     <div class="hidden justify-center items-center w-full h-12 fixed bottom-0 border-t-2 bg-white sm:flex">
-            <div class="fixed text-small rounded-full px-4 py-3 bottom-20 bg-slate-900 text-white font-medium ease-in duration-300 hover:-translate-y-1">
+            <div class="fixed text-small rounded-full px-4 py-3 bottom-20 bg-slate-900 text-white font-medium ease-in duration-100 hover:scale-105">
                 <a href="">
                     Tampilkan peta <span><img src="/svg/map.svg" alt="" class="h-5 inline ml-1 bg-white rounded-full"></span>
                 </a>

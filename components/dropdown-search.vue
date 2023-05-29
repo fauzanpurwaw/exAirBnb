@@ -11,11 +11,11 @@
     <!-- searchbar mobile -->
     <div class="sm:hidden flex items-center justify-between border border-red-400 rounded-full w-full p-1 text-small font-normal hover:cursor-pointer"
         @click="toggleSearch = !toggleSearch">
-        <div class="flex h-ful justify-center items-center">
+        <div class="flex h-ful justify-center items-center text-slate-400">
             <span class="flex items-center justify-center bg-red-bnb p-2 rounded-full mr-3">
                 <img src="/img/magnifying-glass.png" alt="" class="h-5 inline">
             </span>
-            Cari disini...
+            Cari Disini...
         </div>
     </div>
     <Transition>

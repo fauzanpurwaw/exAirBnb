@@ -1,8 +1,9 @@
 <template>
     <NuxtLayout :name="layouts.header" />
     <NuxtLayout :name="layouts.container">
+        <Order />
         <Heibergement />
-        <Explorer></Explorer>
+        <Explorer />
         <Dicouverz />
         <Logement />
         <Experience />
