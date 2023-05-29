@@ -12,7 +12,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Lokasi
                             <input type="text" placeholder="Pilih destinasi" id="orderLokasi"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white hover:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col border-r border-rose-400 lg:pr-3 pr-1 lg:ml-3 ml-1">
@@ -20,7 +20,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Check In
                             <input type="text" placeholder="mm/dd/yy" id="orderCheckIn"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white hover:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col border-r border-rose-400 lg:pr-3 pr-1 lg:ml-3 ml-1">
@@ -28,7 +28,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Check Out
                             <input type="text" placeholder="mm/dd/yy" id="orderCheckOut"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white hover:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col lg:pr-3 pr-1 lg:ml-3 ml-1">
@@ -36,7 +36,7 @@
                             class="hover:bg-rose-400 hover:text-white duration-300 cursor-pointer lg:text-lg text-sm font-semibold border border-rose-500 rounded py-2 px-3 ">
                             Tamu
                             <input type="text" placeholder="mm/dd/yy" id="orderTamu"
-                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white duration-500 w-full">
+                                class="bg-inherit text-slate-500 text-sm px-2 py-1 mt-2 rounded focus:outline-none focus:ring-1 focus:ring-rose-400 focus:bg-white hover:bg-white duration-500 w-full">
                         </label>
                     </div>
                     <div class="flex flex-col">

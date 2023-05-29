@@ -1,15 +1,17 @@
 <template>
-    <div class="sm:flex flex-row justify-center items-center 
-                gap-2 h-full lg:ml-5 px-5 text-sm border border-gray-300 rounded-full
-                hover:shadow hover:cursor-pointer w-fit hidden font-normal" @click="toggleSearch = !toggleSearch">
+    <label for="searchInput" class="sm:flex flex-row justify-center items-center 
+                    gap-2 h-full lg:ml-5 px-5 text-sm border border-gray-300 rounded-full
+                    hover:shadow hover:cursor-pointer w-fit hidden font-normal" @click="toggleSearch = !toggleSearch">
         <a class="border-r-2 pr-2">Ke mana saja</a>
         <a class="border-r-2 pr-2">Minggu mana pun</a>
         <a>Tambah tamu</a>
-        <span class="bg-red-bnb px-2 py-1 rounded-full"><img src="/img/magnifying-glass.png" alt=""
-                class="h-4 inline"></span>
-    </div>
+        <span class="bg-red-bnb px-2 py-1 rounded-full">
+            <img src="/img/magnifying-glass.png" alt="" class="h-4 inline">
+        </span>
+    </label>
     <!-- searchbar mobile -->
-    <div class="sm:hidden flex items-center justify-between border border-red-400 rounded-full w-full p-1 text-small font-normal hover:cursor-pointer"
+    <label for="searchInput"
+        class="sm:hidden flex items-center justify-between border border-red-400 rounded-full w-full p-1 text-small font-normal hover:cursor-pointer"
         @click="toggleSearch = !toggleSearch">
         <div class="flex h-ful justify-center items-center text-slate-400">
             <span class="flex items-center justify-center bg-red-bnb p-2 rounded-full mr-3">
@@ -17,7 +19,7 @@
             </span>
             Cari Disini...
         </div>
-    </div>
+    </label>
     <Transition>
         <div class="flex h-screen w-screen absolute top-0 right-0 cursor-default" v-show="toggleSearch">
             <div class="absolute h-screen w-screen z-[1]" @click="toggleSearch = !toggleSearch"></div>
@@ -34,8 +36,9 @@
                                 <input type="text" name="" id="searchInput"
                                     class="py-1 px-3 sm:w-[300px] w-[35vh] text-small text-slate-500 accent-rose-400"
                                     placeholder="Cari Disini...">
-                                </div>
-                                <button class="p-2 rounded-full hover:bg-rose-100 mx-1" @click="toggleSearch = !toggleSearch"><img src="/svg/close.svg" alt="" class="h-5"></button>
+                            </div>
+                            <button class="p-2 rounded-full hover:bg-rose-100 mx-1"
+                                @click="toggleSearch = !toggleSearch"><img src="/svg/close.svg" alt="" class="h-5"></button>
                         </div>
                     </label>
                     <div

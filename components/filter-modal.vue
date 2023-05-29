@@ -13,7 +13,7 @@
                     </div>
                     <div
                         class="flex flex-col items-center bg-white sm:h-[90vh] h-full w-full max-w-[800px] rounded-xl shadow-xl px-5 z-[2]">
-                        <div class="flex items-center w-full h-[10%] border-b rounded-t-xl relative">
+                        <div class="flex items-center w-full h-[10%] rounded-t-xl relative">
                             <div class="text-lg font-semibold w-full text-center ml-5">Filter</div>
                             <button @click="filterOpen = false, clearDataFilter()"
                                 class="opacity-75 hover:opacity-100"><span><img src="/svg/close.svg" alt=""
@@ -25,9 +25,13 @@
                                 <p class="text-lg text-slate-600 font-light">The average nightly price is Rp1,145,983, not
                                     including fees or taxes.</p>
                                 <div class="flex justify-center items-center w-full p-5 mt-5">
-                                    <input type="number" name="" id="" class="flex-1 w-full shadow h-16 rounded-lg text-center font-light border-2" v-model="priceRange.from">
+                                    <input type="number" name="" id=""
+                                        class="flex-1 w-full shadow h-16 rounded-lg text-center font-light border-2"
+                                        v-model="priceRange.from">
                                     <p class="mx-5 text-slate-500">s/d</p>
-                                    <input type="number" name="" id="" class="flex-1 w-full shadow h-16 rounded-lg text-center font-light border-2 " v-model="priceRange.to">
+                                    <input type="number" name="" id=""
+                                        class="flex-1 w-full shadow h-16 rounded-lg text-center font-light border-2 "
+                                        v-model="priceRange.to">
                                 </div>
                             </div>
                             <div class="mt-10">
@@ -75,23 +79,29 @@
                             </div>
                             <div class="mt-10">
                                 <h2 class="text-2xl font-semibold text-slate-800">Property type</h2>
-                                <div class="mt-5 flex gap-5 flex-wrap" >
+                                <div class="mt-5 flex gap-5 flex-wrap">
                                     <div class="flex gap-5 items-center" v-for="item in property.list">
                                         <div v-if="property.checked.includes(item.name)">
-                                            <label :for="'type'+item.name" class="flex flex-col bg-black text-white justify-center items-start gap-3 border rounded-lg w-36 h-28 pl-3 hover:border-black duration-300 cursor-pointer" @click="uncheckType(item.name)">
-                                            <img :src="'/svg/'+item.pict" alt="" class="h-10 p-2 rounded-full bg-white">
-                                            <p class="font-semibold">{{ item.name }}</p>
-                                        </label>
-                                        <input type="checkbox" :name="'type'+item.name" :id="'type'+item.name" class="hidden">
+                                            <label :for="'type' + item.name"
+                                                class="flex flex-col bg-black text-white justify-center items-start gap-3 border rounded-lg w-36 h-28 pl-3 hover:border-black duration-300 cursor-pointer"
+                                                @click="uncheckType(item.name)">
+                                                <img :src="'/svg/' + item.pict" alt="" class="h-10 p-2 rounded-full bg-white">
+                                                <p class="font-semibold">{{ item.name }}</p>
+                                            </label>
+                                            <input type="checkbox" :name="'type' + item.name" :id="'type' + item.name"
+                                                class="hidden">
                                         </div>
                                         <div v-else>
-                                            <label :for="'type'+item.name" class="flex flex-col justify-center items-start gap-3 border rounded-lg w-36 h-28 pl-3 hover:border-black duration-300 cursor-pointer" @click="checkType(item.name)">
-                                            <img :src="'/svg/'+item.pict" alt="" class="h-10">
-                                            <p class="font-semibold">{{ item.name }}</p>
-                                        </label>
-                                        <input type="checkbox" :name="'type'+item.name" :id="'type'+item.name" class="hidden">
+                                            <label :for="'type' + item.name"
+                                                class="flex flex-col justify-center items-start gap-3 border rounded-lg w-36 h-28 pl-3 hover:border-black duration-300 cursor-pointer"
+                                                @click="checkType(item.name)">
+                                                <img :src="'/svg/' + item.pict" alt="" class="h-10">
+                                                <p class="font-semibold">{{ item.name }}</p>
+                                            </label>
+                                            <input type="checkbox" :name="'type' + item.name" :id="'type' + item.name"
+                                                class="hidden">
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -99,27 +109,28 @@
                         <div class="flex justify-between items-center w-full h-[10%] rounded-b-xl border-t">
                             <div class="grid grid-cols-2 gap-4 w-full max-w-[580px]">
                                 <div class="text-[12px]">
-                                    Price Range : 
-                                    <span class="font-semibold">Rp.{{ priceRange.from }}</span> 
-                                    s/d 
-                                    <span class="font-semibold">Rp.{{ priceRange.to }}</span> 
+                                    Price Range :
+                                    <span class="font-semibold">Rp.{{ priceRange.from }}</span>
+                                    s/d
+                                    <span class="font-semibold">Rp.{{ priceRange.to }}</span>
                                 </div>
                                 <div class="text-[12px]">
-                                    Bed : 
-                                    <span class="font-semibold">{{ picked.bed }}</span> 
+                                    Bed :
+                                    <span class="font-semibold">{{ picked.bed }}</span>
                                 </div>
                                 <div class="text-[12px]">
-                                    Property Type : 
+                                    Property Type :
                                     <div class="font-semibold inline" v-for="checkeed in property.checked">
-                                    - {{ checkeed }}
-                                    </div> 
+                                        - {{ checkeed }}
+                                    </div>
                                 </div>
                                 <div class="text-[12px]">
-                                    RestRoom : 
+                                    RestRoom :
                                     <span class="font-semibold">{{ picked.toilet }} </span>
                                 </div>
-                            </div>  
-                                <button @click="clearDataFilter" class=" font-semibold border border-black rounded-full px-5 py-1 text-xl hover:bg-black hover:text-white">Clear</button>
+                            </div>
+                            <button @click="clearDataFilter"
+                                class=" font-semibold border border-black rounded-full px-5 py-1 text-xl hover:bg-black hover:text-white">Clear</button>
                         </div>
                     </div>
                 </div>
@@ -149,9 +160,9 @@ export default {
             },
             property: {
                 list: [
-                    {name: "Rumah", pict: "home.svg"},
-                    {name: "Apartment", pict: "apartment.svg"},
-                    {name: "Guesthouse", pict: "guest-house.svg"},
+                    { name: "Rumah", pict: "home.svg" },
+                    { name: "Apartment", pict: "apartment.svg" },
+                    { name: "Guesthouse", pict: "guest-house.svg" },
                 ],
                 checked: [],
             },
@@ -167,19 +178,15 @@ export default {
         },
         checkType(a) {
             if (!this.property.checked.includes(a)) {
-                    this.property.checked.push(a);
-                }
-                // console.log(this.property.checked)
+                this.property.checked.push(a);
+            }
+            // console.log(this.property.checked)
         },
         uncheckType(a) {
-            for (let i=0; i<this.property.checked.length;i++) {
+            for (let i = 0; i < this.property.checked.length; i++) {
                 if (this.property.checked[i] == a) {
-                    this.property.checked.splice(i,1);
-                    // console.log(a);
-                    // console.log(this.property.checked);
+                    this.property.checked.splice(i, 1);
                 }
-                // console.log(a);
-                // console.log(this.property.checked);
             }
         }
     }
