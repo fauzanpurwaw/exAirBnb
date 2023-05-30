@@ -74,7 +74,7 @@ export default {
                     this.productData = data;
                     console.log(this.productData);
                 } else {
-                    let { data: data } = await useFetch('https://dummyjson.com/products/search?q='+this.keyWord);
+                    let { data: data } = await useFetch('https://dummyjson.com/products/search?q='+this.keyWord.toLowerCase());
                         this.productData = data;
                         console.log(this.productData);
             }
