@@ -43,7 +43,7 @@
                     <div class="flex flex-col w-full overflow-y-auto max-h-[600px]">
                         <div class="flex items-center w-full border-b px-2 py-2 hover:cursor-pointer hover:bg-rose-100 rounded mt-2"
                             v-for="product in productData.products" :key="product.id">
-                            <NuxtLink :to="'detail/' + product.id">
+                            <NuxtLink :to="'../detail/' + product.id">
                                 <div class="flex items-center w-full border-b px-2 py-2 hover:cursor-pointer hover:bg-rose-100 rounded mt-2"
                                     id="list">
                                     <img src="/svg/user.svg" alt="" class="h-5">
