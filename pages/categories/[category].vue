@@ -14,7 +14,7 @@ const { pending,data: data } = await useFetch('https://dummyjson.com/products/ca
                     <NuxtLink :to="'../detail/' + product.id">
                         <img :src="product.thumbnail" alt="" class="w-full h-56 hover:scale-105 duration-1000 rounded-lg">
                     </NuxtLink>
-                    <NuxtLink :to="'categories/' + product.category">
+                    <NuxtLink :to="'.../categories/' + product.category">
                         <h3 class="text-[10px] text-gray-500 font-bold mt-2 hover:text-rose-500 duration-300">{{
                             product.category }}</h3>
                     </NuxtLink>
