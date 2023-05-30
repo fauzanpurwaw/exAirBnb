@@ -1,3 +1,4 @@
+
 <template>
     <NuxtLayout :name="layouts.header" />
     <NuxtLayout :name="layouts.container">
@@ -19,7 +20,7 @@ export default {
             layouts: {
                 header: "header",
                 container: "container"
-            }
+            },
         }
     }
 }

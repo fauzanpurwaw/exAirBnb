@@ -1,5 +1,5 @@
 <template>
-    <button @click="filterOpen = true"
+    <button @click="filterOpen = !filterOpen"
         class="flex flex-row items-center filter min-w-fit h-6 pl-3 pr-4 py-6 border border-gray-300 rounded-2xl font-normal">
         <img src="/svg/adjust.svg" alt="" class="h-5 mx-1">
         <p>Filter</p>
@@ -9,13 +9,13 @@
             <div class="flex justify-center items-center w-full h-[100vh] z-20 fixed" v-show="filterOpen">
                 <div class="relative h-full w-full flex items-center justify-center">
                     <div class="absolute h-screen w-screen bg bg-slate-700 bg-opacity-25 z-[1]"
-                        @click="filterOpen = false, clearDataFilter()">
+                        @click="filterOpen = !filterOpen,clearDataFilter()">
                     </div>
                     <div
                         class="flex flex-col items-center bg-white sm:h-[90vh] h-full w-full max-w-[800px] rounded-xl shadow-xl px-5 z-[2]">
                         <div class="flex items-center w-full h-[10%] rounded-t-xl relative">
                             <div class="text-lg font-semibold w-full text-center ml-5">Filter</div>
-                            <button @click="filterOpen = false, clearDataFilter()"
+                            <button @click="filterOpen = !filterOpen,clearDataFilter()"
                                 class="opacity-75 hover:opacity-100"><span><img src="/svg/close.svg" alt=""
                                         class="h-6"></span></button>
                         </div>
@@ -141,14 +141,9 @@
 
 <script>
 export default {
-    props: {
-        filterOpen: {
-            type: Boolean,
-            default: false
-        }
-    },
     data() {
         return {
+            filterOpen: false,
             bedntoiletList: ["bebas", "1", "2", "3", "4", "5", "6", "7", "8+"],
             picked: {
                 bed: "bebas",
@@ -180,7 +175,6 @@ export default {
             if (!this.property.checked.includes(a)) {
                 this.property.checked.push(a);
             }
-            // console.log(this.property.checked)
         },
         uncheckType(a) {
             for (let i = 0; i < this.property.checked.length; i++) {

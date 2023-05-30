@@ -2,7 +2,7 @@
     <div class="hidden flex-col gap-5 text-slate-800 mt-12 sm:flex">
         <div class="flex flex-col w-full lg:h-[46vh] sm:h-[40vh] mb-20 h-[10vh] duration-1000
         justify-between items-center bg-[url('/img/hero.png')] bg-no-repeat bg-center sm:px-2">
-            <div class="flex justify-center items-center h-full text-3xl font-bold text-white">
+            <div class="flex justify-center items-center h-full text-3xl font-bold text-white mt-10">
                 Welcome, <span class="text-rose-400">guest</span> !
             </div>
             <div class="flex justify-center items-center shadow-lg h-fit px-2 py-3 rounded-lg duration-1000 w-[90%] bg-white relative top-16">
