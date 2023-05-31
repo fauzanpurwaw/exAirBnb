@@ -1,15 +1,7 @@
 
 <template>
     <NuxtLayout :name="layouts.header" />
-    <NuxtLayout :name="layouts.container">
-        <Order />
-        <Heibergement />
-        <Explorer />
-        <Dicouverz />
-        <Logement />
-        <Experience />
-        <Destination />
-    </NuxtLayout>
+    <NuxtLayout :name="layouts.container" />
     <Footer />
 </template>
 

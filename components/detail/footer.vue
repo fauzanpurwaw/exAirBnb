@@ -1,5 +1,5 @@
 <template>
-    <div class="hidden justify-center items-center w-full h-12 absolute bottom-0 border-t-2 bg-white sm:flex">
+    <div class="hidden justify-center items-center w-full h-12 border-t-2 bg-white sm:flex">
         <div class="container flex lg:justify-between justify-center px-20 mx-auto">
             <ul class="hidden lg:flex flex-nowrap text-small">
                 <li class="pr-3">

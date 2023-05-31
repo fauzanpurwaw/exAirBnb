@@ -11,5 +11,6 @@ export default defineNuxtConfig({
         head: {
             title: "fauzan | AirBnb"
         }
-    }
+    },
+    modules: ['nuxt-swiper']
 })

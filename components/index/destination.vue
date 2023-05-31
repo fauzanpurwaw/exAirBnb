@@ -1,5 +1,5 @@
 <script setup>
-    const {data: data} = await useLazyFetch('https://dummyjson.com/products/category/skincare?limit=3')
+const { data: data } = await useLazyFetch('https://dummyjson.com/products/category/skincare?limit=3')
 </script>
 <template>
     <div class="flex flex-col gap-5 text-slate-700 mt-16 mb-40">
@@ -8,9 +8,10 @@
             <p class="">Voyages de plusieurs jours organisés par des experts locaux avec activités, repas et
                 logements compris</p>
         </div>
-        <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 w-full" >
+        <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 w-full">
             <div class="flex flex-col gap-3 rounded hover:cursor-pointer" v-for="product in data.products">
-                <div class="flex justify-center items-center h-64 bg-no-repeat bg-cover bg-center bg-red-100 rounded duration-500 hover:scale-105 hover:brightness-[80%] hover:contrast-200">
+                <div
+                    class="flex justify-center items-center h-64 bg-no-repeat bg-cover bg-center bg-red-100 rounded duration-500 hover:scale-105 hover:brightness-[80%] hover:contrast-200">
                     <img :src="product.thumbnail" alt="" class="h-64 w-full brightness-75 rounded">
                     <span class="absolute"><img src="/img/Vector.png" alt=""></span>
                 </div>

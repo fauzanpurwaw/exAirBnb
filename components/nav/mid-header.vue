@@ -5,13 +5,13 @@
                 <img src="/svg/airbnb.svg" alt="BnBlogo" srcset="" class="h-8 lg:block hidden">
                 <img src="/svg/airbnb-1.svg" alt="BnBlogo" srcset="" class="h-10 lg:hidden sm:block hidden mr-2">
                 <!-- searchbar desktop -->
-                <DropdownSearch />
-                <DropdownMenu class="min-w-fit sm:hidden ml-3 text-small"/>
+                <NavDropdownSearch />
+                <NavDropdownMenu class="min-w-fit sm:hidden ml-3 text-small"/>
             </div>
             <div class="sm:flex justify-between items-center gap-4 text-sm min-w-fit hidden">
                 <a href="" class="hidden lg:block ">Jadikan rumah Anda Airbnb</a>
                 <a href="" class="ml-2 hidden sm:block "><span><img src="/svg/globe.svg" alt="" class="h-5 inline"></span></a>
-                <DropdownMenu />
+                <NavDropdownMenu />
             </div>
         </div>
     </div>

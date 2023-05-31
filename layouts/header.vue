@@ -1,7 +1,7 @@
 <template>
-    <TopHeader />
-    <MidHeader />
-    <BotHeader :dir="botDir"/>
+    <NavTopHeader />
+    <NavMidHeader />
+    <NavBotHeader :dir="botDir"/>
 </template>
 
 <script>
