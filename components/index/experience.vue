@@ -28,18 +28,18 @@ const { data: data } = await useFetch('https://dummyjson.com/products?limit=12')
                     }"
                     >
                     <SwiperSlide v-for="image in product.images">
-                        <NuxtLink :to="'detail/' + product.id">
+                        <NuxtLink :to="'/detail/' + product.id">
                             <img :src="image" alt="" class="w-full h-56 duration-1000 rounded-lg">
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>  
 
-                    <NuxtLink :to="'categories/' + product.category">
+                    <NuxtLink :to="'/categories/' + product.category">
                         <h3 class="text-[10px] text-gray-500 font-bold mt-2 hover:text-rose-500 duration-300">{{
                             product.category }}</h3>
                     </NuxtLink>
                     <div class="flex justify-between">
-                        <NuxtLink :to="'detail/' + product.id">
+                        <NuxtLink :to="'/detail/' + product.id">
                             <h2 class="font-bold">{{ product.brand }}</h2>
                         </NuxtLink>
                         <p class="text-emerald-800 font-bold ">{{ product.rating }} <span><img

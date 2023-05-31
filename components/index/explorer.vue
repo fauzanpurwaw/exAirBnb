@@ -9,7 +9,7 @@
                 <NuxtLink :to="'categories/'+category">
                     <img src="/img/explorer/explorer1.png" alt="" class="h-full rounded-l-xl">
                 </NuxtLink>
-                <NuxtLink :to="'categories/'+category">
+                <NuxtLink :to="'/categories/'+category">
                     <div class="flex mx-6 overflow-x-auto">
                         {{ category }}
                         </div>
