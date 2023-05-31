@@ -2,7 +2,7 @@
     <div class="flex items-center sm:px-28 px-2 h-20 w-full sticky top-0 border-b bg-white z-10 text-slate-950">
         <div class="w-full flex justify-between mx-auto font-semibold text-lg">
             <div class="flex flex-row sm:justify-start items-center w-full" > 
-                <NuxtLink to="../">
+                <NuxtLink to="/">
                     <img src="/svg/airbnb.svg" alt="BnBlogo" srcset="" class="h-8 lg:block hidden">
                 </NuxtLink>
                 <NuxtLink to="../">

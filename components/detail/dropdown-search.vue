@@ -1,7 +1,7 @@
 <template>
     <label for="searchInput" class="sm:flex flex-row justify-center items-center 
                     gap-2 h-full lg:ml-5 px-5 text-sm border border-gray-300 rounded-full
-                    hover:shadow hover:cursor-pointer w-fit hidden font-normal " @click="toggleSearch = !toggleSearch, filterData(), keyWord = ''">
+                    hover:shadow hover:cursor-pointer w-fit hidden font-normal py-1" @click="toggleSearch = !toggleSearch, filterData(), keyWord = ''">
         <a class="border-r-2 pr-2 w-64">Cari disini...</a>
         <span class="bg-red-bnb px-2 py-1 rounded-full">
             <img src="/img/magnifying-glass.png" alt="" class="h-4 inline">
