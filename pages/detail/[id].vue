@@ -27,7 +27,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                 </span>
             </div>
         </div>
-        <div class="flex justify-between gap-2 items-center w-full h-[480px] mt-6 bg-red-200">
+        <div class="flex justify-between gap-2 items-center w-full h-[480px] mt-6">
             <div class="row-span-2 col-span-2 h-[100%] w-full">
                 <img :src="data.thumbnail" alt="" class="h-full w-full rounded-l-lg">
             </div>
