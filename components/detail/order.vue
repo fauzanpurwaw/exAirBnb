@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white border border-gray-300 shadow-lg rounded-xl h-fit p-5 w-[372px] duration-1000">
+    <div class="bg-white border border-gray-300 shadow-lg rounded-xl h-fit p-5 w-[372px] duration-1000 ">
         <div class="flex justify-between items-center">
             <h1 class="text-lg font-medium">$.{{ price }} <span class="font-normal text-slate-700">/pcs</span>
             </h1>
@@ -158,7 +158,7 @@ export default {
     },
     data() {
         return {
-            stockCounter: 0,
+            stockCounter: 1,
             openPriceDetail: false,
             openCleaninTax: false,
             openAdminTax: false,
@@ -187,9 +187,9 @@ export default {
                     this.stockCounter = stock;
                 }
             } else if ( n==-1 ) {
-                if ( this.stockCounter <= 0 ) {
-                    this.stockCounter = 0;
-                } else if ( this.stockCounter > 0 ) {
+                if ( this.stockCounter <= 1 ) {
+                    this.stockCounter = 1;
+                } else if ( this.stockCounter > 1 ) {
                     this.stockCounter += n;
                 }
             }
