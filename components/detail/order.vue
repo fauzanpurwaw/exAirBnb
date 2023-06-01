@@ -19,21 +19,26 @@
             <div class="flex flex-col w-full border-gray-400 rounded-lg duration-1000">
                 <div class="flex justify-between w-full h-full rounded-lg">
                     <div class="flex justify-center shadow-lg hover:shadow-xl items-center h-full flex-col w-full hover:scale-105 rounded-tl-lg hover:cursor-pointer"
-                    @click="accumulateStock(-1,stock)">
+                        @click="accumulateStock(-1, stock)">
                         <h1 class="text-[25px] text-left font-bold">-</h1>
                     </div>
                     <div class="flex py-5 justify-center items-center h-full flex-col w-full border-gray-400">
                         <h1 class="text-[20px] text-left">{{ stockCounter }}</h1>
                     </div>
-                    <div class="flex justify-center shadow-lg items-center h-full flex-col w-full hover:scale-105 rounded-tr-lg hover:cursor-pointer" 
-                    @click="accumulateStock(1,stock)">
+                    <div class="flex justify-center shadow-lg items-center h-full flex-col w-full hover:scale-105 rounded-tr-lg hover:cursor-pointer"
+                        @click="accumulateStock(1, stock)">
                         <h1 class="text-[20px] text-left font-bold">+</h1>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="flex items-center py-8 bg-white h-8 w-fit px-1">
+            <label for="note" class="text-rose-500 font-semibold mr-2 w-full cursor-pointer hover:scale-95 duration-300"  @click="openNote = !openNote"> <span><img src="/svg/note.svg" alt=""
+            class="h-6 inline mb-1"></span> Add note</label>
+            <input type="text" id="note" name="note" placeholder="Contoh: warna putih, ukurann Xl" class="ring-1 ring-rose-500 h-8 rounded-lg w-64 text-slate-800 px-2" v-show="openNote">
+        </div>
         <div
-            class="hover:scale-105 flex justify-center items-center rounded-lg mt-4 bg-rose-500 h-12 cursor-pointer duration-300">
+            class="hover:scale-105 flex justify-center items-center rounded-lg bg-rose-500 h-12 cursor-pointer duration-300">
             <h1 class="text-white font-semibold">Buy now</h1>
         </div>
         <div
@@ -53,7 +58,7 @@
                 </div>
             </div>
             <Transition>
-                <div class="flex flex-col shadow-lg border rounded-lg h-fit w-[330px] absolute right-[500px] bottom-[-260px] duration-1000"
+                <div class="flex flex-col shadow-lg border rounded-lg h-fit w-[330px] absolute top-[120px] duration-1000"
                     v-show="openPriceDetail">
                     <div class="flex fixed h-screen w-screen top-0 z-[1] left-0" @click="togglePriceDetail()"></div>
                     <div class="flex justify-end px-4 py-2 z-[2] bg-white rounded-t border shadow">
@@ -68,7 +73,7 @@
                         </div>
                         <div class="flex justify-between text-small mb-4">
                             <p>
-                                {{ title }} 
+                                {{ title }}
                             </p>
                             <p class="font-medium">
                                 x {{ stockCounter }}pcs
@@ -90,11 +95,11 @@
                     Biaya pengemasan
                 </div>
                 <div>
-                    $.{{ stockCounter == 0? 0 : cleaningPrice }}
+                    $.{{ stockCounter == 0 ? 0 : cleaningPrice }}
                 </div>
             </div>
             <Transition>
-                <div class="absolute bottom-[-60px] duration-1000" v-show="openCleaninTax">
+                <div class="absolute top-[260px] duration-1000" v-show="openCleaninTax">
                     <div class="fixed h-screen w-screen top-0 right-0 z-[1]" @click="toggleCleaninTax()"></div>
                     <div
                         class="flex items-center h-fit w-[330px] gap-4 p-2 bg-white absolute z-[2] border shadow-lg rounded-lg">
@@ -111,7 +116,7 @@
                     Biaya layanan Airbnb
                 </div>
                 <Transition>
-                    <div class="absolute bottom-[-75px] duration-1000" v-show="openAdminTax">
+                    <div class="absolute top-[280px] duration-1000" v-show="openAdminTax">
                         <div class="fixed h-screen w-screen top-0 right-0 z-[1]" @click="toggleAdminTax()"></div>
                         <div
                             class="flex items-center h-fit w-[332px] gap-4 p-2 bg-white absolute z-[2] border shadow-lg rounded-lg">
@@ -123,7 +128,7 @@
                     </div>
                 </Transition>
                 <div>
-                    $.{{ stockCounter == 0? 0 : adminPrice }}
+                    $.{{ stockCounter == 0 ? 0 : adminPrice }}
                 </div>
             </div>
         </div>
@@ -131,7 +136,7 @@
             <div>
                 Total sebelum pajak
             </div>
-            ${{ stockCounter == 0? 0 : (price * stockCounter) + cleaningPrice + adminPrice }}
+            ${{ stockCounter == 0 ? 0 : (price * stockCounter) + cleaningPrice + adminPrice }}
         </div>
     </div>
 </template>
@@ -164,6 +169,7 @@ export default {
             openAdminTax: false,
             cleaningPrice: 3.4,
             adminPrice: 11.1,
+            openNote: false,
         }
     },
     methods: {
@@ -179,21 +185,21 @@ export default {
             this.openAdminTax = !this.openAdminTax;
             console.log(this.openAdminTax);
         },
-        accumulateStock(n,stock) {
-            if ( n==1 ) {
-                if ( this.stockCounter < stock ) {
+        accumulateStock(n, stock) {
+            if (n == 1) {
+                if (this.stockCounter < stock) {
                     this.stockCounter += n;
-                } else if ( this.stockCounter == stock ) {
+                } else if (this.stockCounter == stock) {
                     this.stockCounter = stock;
                 }
-            } else if ( n==-1 ) {
-                if ( this.stockCounter <= 1 ) {
+            } else if (n == -1) {
+                if (this.stockCounter <= 1) {
                     this.stockCounter = 1;
-                } else if ( this.stockCounter > 1 ) {
+                } else if (this.stockCounter > 1) {
                     this.stockCounter += n;
                 }
             }
-            console.log(this.stockCounter,stock);
+            console.log(this.stockCounter, stock);
         }
     }
 }
