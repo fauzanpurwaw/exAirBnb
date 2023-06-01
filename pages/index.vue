@@ -1,14 +1,10 @@
 
 <template>
     <NuxtLayout :name="layouts.header" />
-    <NuxtLayout :name="layouts.container">
-        <IndexOrder />
-        <IndexHeibergement />
+    <NuxtLayout :name="layouts.container"> 
+        <IndexHeibergement/>
         <IndexExplorer />
         <IndexDicouverz />
-        <IndexLogement />
-        <IndexExperience />
-        <IndexDestination />
     </NuxtLayout>
     <Footer />
 </template>

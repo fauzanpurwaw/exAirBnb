@@ -1,10 +1,6 @@
 <template>
-    <div class="flex flex-col gap-5 text-slate-800 mt-12">
-        <div>
-            <h1 class="text-xl font-bold">heibergement Airbnb Plus</h1>
-            <p class="">Une sélection de logements vérifiés selon des critères de qualité et de design</p>
-        </div>
-        <div class="flex flex-col w-full h-96 bg-[url('/img/heibergement/heibergement1.png')] bg-no-repeat bg-cover bg-center
+    <div class="flex flex-col gap-5 text-slate-800 mt-8">
+        <div class="flex flex-col w-full h-96 bg-[url('/img/heibergement/heibergement1.png')] rounded-lg bg-no-repeat bg-cover bg-center
         justify-center items-center"
         >
         <img src="/img/Vector.png" alt="" class="h-28 mb-10">

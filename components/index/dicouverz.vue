@@ -1,14 +1,14 @@
 <script setup>
-const { data: data } = await useLazyFetch('https://dummyjson.com/products?limit=12');
+const { data: data } = await useFetch('https://dummyjson.com/products?limit=28');
 </script>
 <template>
-    <div class="flex flex-col gap-5 text-slate-700 mt-16">
-        <div>
+    <div class="flex flex-col gap-5 text-slate-950 mt-8">
+        <!-- <div>
             <h1 class="text-xl font-bold">Discouverez dans le monde entier</h1>
             <p class="">Voyages de plusieurs jours organisés par des experts locaux avec activités, repas et logements
                 compris</p>
-        </div>
-        <div class="grid lg:grid-cols-6 sm:grid-cols-4 grid-cols-3 gap-3 w-full">
+        </div> -->
+        <div class="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-8 w-full">
             <div class="flex flex-col gap-1 rounded" v-for="product in data.products" :key="product.id">
                 <div>
                     <Swiper 
@@ -29,22 +29,22 @@ const { data: data } = await useLazyFetch('https://dummyjson.com/products?limit=
                     >
                     <SwiperSlide v-for="image in product.images">
                         <NuxtLink :to="'/detail/' + product.id">
-                            <img :src="image" alt="" class="w-full h-56 duration-1000 rounded-lg">
+                            <img :src="image" alt="" class="w-full h-56 object-cover aspect-square duration-1000 rounded-lg">
                         </NuxtLink>
                     </SwiperSlide>
                     </Swiper>
-
                     <NuxtLink :to="'/categories/' + product.category">
                         <h3 class="text-[10px] text-gray-500 font-bold mt-2 hover:text-rose-500 duration-300">{{ product.category }}</h3>
                     </NuxtLink>
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-center">
                         <NuxtLink :to="'/detail/' + product.id">
                             <h2 class="font-bold">{{ product.brand }}</h2>
                         </NuxtLink>
-                        <p class="text-emerald-800 font-bold ">{{ product.rating }} <span><img
-                                    src="/img/dicouvrez/Star1.png" alt="" class=" inline"></span></p>
+                        <p class="font-bold ml-1">{{ product.rating }} <span><img
+                            src="/svg/star.svg" alt="" class="h-4 mb-1 inline"></span></p>
                     </div>
-                    <p class="h-36 overflow-y-scroll">{{ product.description }}</p>
+                    <p class="h-fit overflow-y-scroll truncate text-slate-500">{{ product.description }}</p>
+                    <h2 class="flex justify-end w-full font-bold">$.{{ product.price }}</h2>
                 </div>
             </div>
         </div>
@@ -52,12 +52,15 @@ const { data: data } = await useLazyFetch('https://dummyjson.com/products?limit=
 </template>
 <style>
 .swiper-button-next {
-    @apply flex items-center justify-center text-sm text-rose-500 hover:translate-x-1 duration-300;
+    @apply flex items-center justify-center text-sm rounded-full w-10
+     text-rose-500 hover:translate-x-1 duration-300;
     display: none;
+    background-image: url('/svg/chvronn-up.svg');
 }
 
 .swiper-button-prev {
-    @apply flex items-center justify-center text-sm text-rose-500 hover:-translate-x-1 duration-300;
+    @apply flex items-center justify-center text-sm
+     text-rose-500 hover:-translate-x-1 duration-300;
     display: none;
 }
 
@@ -75,7 +78,7 @@ const { data: data } = await useLazyFetch('https://dummyjson.com/products?limit=
 }
 
 .swiper-pagination-bullet {
-    @apply bg-rose-400;
+    @apply bg-black;
     width: 6px;
     height: 6px;
     opacity: 0.5;

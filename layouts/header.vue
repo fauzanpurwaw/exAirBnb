@@ -1,5 +1,5 @@
 <template>
-    <NavTopHeader />
+    <!-- <NavTopHeader /> -->
     <NavMidHeader />
     <NavBotHeader :dir="botDir"/>
 </template>
