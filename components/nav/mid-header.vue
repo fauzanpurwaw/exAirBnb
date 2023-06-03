@@ -2,8 +2,12 @@
     <div class="flex items-center sm:px-10 px-2 h-20 w-full sticky top-0 border-b bg-white z-10 text-slate-950">
         <div class="w-full flex justify-between mx-auto font-semibold text-lg">
             <div class="flex flex-row sm:justify-start items-center w-full" >  
-                <img src="/svg/airbnb.svg" alt="BnBlogo" srcset="" class="h-8 lg:block hidden">
-                <img src="/svg/airbnb-1.svg" alt="BnBlogo" srcset="" class="h-10 lg:hidden sm:block hidden mr-2">
+                <NuxtLink to="/">
+                    <img src="/svg/airbnb.svg" alt="BnBlogo" srcset="" class="h-8 lg:block hidden">
+                </NuxtLink>
+                <NuxtLink to="/">
+                    <img src="/svg/airbnb-1.svg" alt="BnBlogo" srcset="" class="h-10 lg:hidden sm:block hidden mr-2">
+                </NuxtLink>
                 <!-- searchbar desktop -->
                 <NavDropdownSearch />
                 <NavDropdownMenu class="min-w-fit sm:hidden ml-3 text-small"/>

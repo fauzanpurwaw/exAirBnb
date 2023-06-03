@@ -22,9 +22,9 @@
                         @click="accumulateStock(-1, stock)">
                         <h1 class="text-[25px] text-left font-bold">-</h1>
                     </div>
-                    <div class="flex py-5 justify-center items-center h-full flex-col w-full border-gray-400">
-                        <h1 class="text-[20px] text-left">{{ stockCounter }}</h1>
-                    </div>
+                    <input type="number"
+                        class="flex text-lg py-5 text-center justify-center items-center h-full flex-col w-full"
+                        v-model="stockCounter" :on-keyup="accumulateStock(0, stock)" />
                     <div class="flex justify-center shadow-lg items-center h-full flex-col w-full hover:scale-105 rounded-tr-lg hover:cursor-pointer"
                         @click="accumulateStock(1, stock)">
                         <h1 class="text-[20px] text-left font-bold">+</h1>
@@ -33,16 +33,18 @@
             </div>
         </div>
         <div class="flex items-center py-8 bg-white h-8 w-fit px-1">
-            <label for="note" class="text-rose-500 font-semibold mr-2 w-full cursor-pointer hover:scale-95 duration-300"  @click="openNote = !openNote"> <span><img src="/svg/note.svg" alt=""
-            class="h-6 inline mb-1"></span> Add note</label>
-            <input type="text" id="note" name="note" placeholder="Contoh: warna putih, ukurann Xl" class="ring-1 ring-rose-500 h-8 rounded-lg w-64 text-slate-800 px-2" v-show="openNote">
+            <label for="note" class="text-rose-500 font-semibold mr-2 w-full cursor-pointer hover:scale-95 duration-100"
+                @click="openNote = !openNote"> <span><img src="/svg/note.svg" alt="" class="h-6 inline mb-1"></span> Add
+                note</label>
+            <input type="text" id="note" name="note" placeholder="Contoh: warna putih, ukurann Xl"
+                class="ring-1 ring-rose-500 h-8 rounded-lg w-64 text-slate-800 px-2" v-show="openNote">
         </div>
         <div
-            class="hover:scale-105 flex justify-center items-center rounded-lg bg-rose-500 h-12 cursor-pointer duration-300">
+            class="active:scale-95 flex justify-center items-center rounded-lg bg-rose-500 h-12 cursor-pointer duration-100">
             <h1 class="text-white font-semibold">Buy now</h1>
         </div>
-        <div
-            class="hover:scale-105 border border-rose-500 flex justify-center items-center rounded-lg mt-4 bg-whit h-12 cursor-pointer duration-300">
+        <div @click="addToCart(id, stockCounter)"
+            class="active:scale-95 border border-rose-500 flex justify-center items-center rounded-lg mt-4 bg-whit h-12 cursor-pointer duration-100">
             <h1 class="text-rose-500 font-semibold">+add to cart</h1>
         </div>
         <div class="flex justify-center items-center text-sm text-slate-500 mt-4">
@@ -144,6 +146,10 @@
 <script>
 export default {
     props: {
+        id: {
+            type: Number,
+            default: 0
+        },
         title: {
             type: String,
             default: ""
@@ -189,18 +195,78 @@ export default {
             if (n == 1) {
                 if (this.stockCounter < stock) {
                     this.stockCounter += n;
-                } else if (this.stockCounter == stock) {
+                } else if (this.stockCounter >= stock) {
                     this.stockCounter = stock;
                 }
             } else if (n == -1) {
-                if (this.stockCounter <= 1) {
+                if (this.stockCounter < 1) {
                     this.stockCounter = 1;
                 } else if (this.stockCounter > 1) {
                     this.stockCounter += n;
                 }
+            } else if (this.stockCounter > stock) {
+                this.stockCounter = stock;
+            } else if (this.stockCounter < 1) {
+                this.stockCounter = 1;
             }
             console.log(this.stockCounter, stock);
+        },
+        async addToCart(id, qty) {
+            let { data: product }  = await useFetch('https://dummyjson.com/products/' + id);
+            let dataProduct        = product._rawValue;
+            dataProduct.qty        = qty;
+            dataProduct.noteStatus = false;
+
+            //if localStorage products didn't exist
+            if (!localStorage.getItem("products")) {
+                let array = [];
+                dataProduct.cartId = 1;
+                dataProduct.subTotal = (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
+                array.push(dataProduct);
+                localStorage.setItem("products", JSON.stringify(array));
+                console.log(JSON.parse(localStorage.getItem("products")));
+            } 
+            //if localStorage products is exist
+            else {
+                //get all data from localStorage
+                let productAtCart = JSON.parse(localStorage.getItem("products"));
+                let listProductId = [];
+                //get ListProductId in localStorage
+                for (let i = 0; i < productAtCart.length; i++) {
+                    if (!listProductId.includes(productAtCart[i].id)) {
+                        listProductId.push(productAtCart[i].id)
+                    }
+                }
+                console.log(listProductId);
+                
+                //check if the id already exists or not
+                if (!listProductId.includes(dataProduct.id)) {
+                    //if not exist save to localStorage
+                    dataProduct.cartId   = productAtCart.length + 1;
+                    dataProduct.subTotal = (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
+                    productAtCart.push(dataProduct);
+                    localStorage.setItem("products", JSON.stringify(productAtCart));
+                    console.log(JSON.parse(localStorage.getItem("products")));
+                    console.log(listProductId);
+                } else {
+                    //if exist
+                    //get data with the same id from localStorage
+                    for (let j = 0; j < productAtCart.length; j++) {
+                        //if data found
+                        if (productAtCart[j].id === id) {
+                            productAtCart[j].subTotal += (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
+                            productAtCart[j].qty      += qty;
+                            localStorage.setItem("products", JSON.stringify(productAtCart));
+                            console.log(JSON.parse(localStorage.getItem("products")));
+                        }
+                    }
+                }
+                console.log(JSON.parse(localStorage.getItem("products")));
+            }
         }
+    },
+    mounted() {
+
     }
 }
 </script>

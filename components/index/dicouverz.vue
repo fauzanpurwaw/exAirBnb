@@ -1,14 +1,19 @@
 <script setup>
-const { data: data } = await useFetch('https://dummyjson.com/products?limit=28');
+const { pending, data: data } = await useLazyFetch('https://dummyjson.com/products?limit=24&skip=5');
 </script>
 <template>
-    <div class="flex flex-col gap-5 text-slate-950 mt-8">
+    <div class="flex flex-col gap-5 text-slate-950 mt-8 mb-16">
         <!-- <div>
             <h1 class="text-xl font-bold">Discouverez dans le monde entier</h1>
             <p class="">Voyages de plusieurs jours organisés par des experts locaux avec activités, repas et logements
                 compris</p>
         </div> -->
-        <div class="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-8 w-full">
+        <div class="fixed flex justify-center items-center bg-white h-screen w-screen top-0 right-0" v-if="pending">
+            <div>
+                <span class=""><img src="/svg/airbnb-1.svg" alt="" class="h-40 animate-bounce"></span>
+            </div>
+        </div>
+        <div class="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-8 w-full" v-else>
             <div class="flex flex-col gap-1 rounded" v-for="product in data.products" :key="product.id">
                 <div>
                     <Swiper 
@@ -55,7 +60,6 @@ const { data: data } = await useFetch('https://dummyjson.com/products?limit=28')
     @apply flex items-center justify-center text-sm rounded-full w-10
      text-rose-500 hover:translate-x-1 duration-300;
     display: none;
-    background-image: url('/svg/chvronn-up.svg');
 }
 
 .swiper-button-prev {

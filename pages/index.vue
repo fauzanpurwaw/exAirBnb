@@ -2,8 +2,7 @@
 <template>
     <NuxtLayout :name="layouts.header" />
     <NuxtLayout :name="layouts.container"> 
-        <IndexHeibergement/>
-        <IndexExplorer />
+        <IndexTax />
         <IndexDicouverz />
     </NuxtLayout>
     <Footer />

@@ -1,7 +1,7 @@
 <template>
     <div class="flex justify-between gap-2 items-center w-full h-[480px] mt-4 duration-1000">
             <div class="row-span-2 col-span-2 h-[100%] w-full">
-                <img :src="thumbnail" alt="" class="h-full w-full md:rounded-l-lg">
+                <img :src="thumbnail ? thumbnail: images[0]" alt="" class="h-full w-full object-cover md:rounded-l-lg">
             </div>
             <div class="flex flex-col flex-nowrap justify-between gap-2 h-full w-full">
                 <div class="flex flex-nowrap justify-between gap-2 h-full max-h-[235px] w-full">

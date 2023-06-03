@@ -95,7 +95,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
             <div class="flex justify-center flex-[40%]">
                 <div class="flex w-full h-full justify-center py-5 lg:ml-24">
                     <div class="flex h-fit flex-col sticky top-4 ">
-                        <DetailOrder :price="data.price" :stock="data.stock" :rating="data.rating" :title="data.title" />
+                        <DetailOrder :price="data.price" :stock="data.stock" :rating="data.rating" :title="data.title" :id="data.id" />
                         <div class="flex w-full justify-center items-center mt-4 text-slate-500 underline">
                             <NuxtLink to="" class="flex items-center gap-2 hover:cursor-pointer hover:text-slate-700">
                                 <span><img src="/svg/flag.svg" alt="" class="h-4"></span> Laporkan produk ini

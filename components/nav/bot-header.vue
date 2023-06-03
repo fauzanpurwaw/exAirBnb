@@ -7,7 +7,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/categories
             <div class="flex gap-8 mr-5 overflow-x-auto" ref="scroll_container">
                 <div class="flex flex-col min-w-fit justify-center items-center opacity-90 hover:opacity-100 h-14 hover:cursor-pointer hover:underline underline-offset-8 my-4"
                     v-for="category in data">
-                    <NuxtLink :to="dir + category" class="flex flex-col justify-center items-center">
+                    <NuxtLink :to="'/categories/'+category" class="flex flex-col justify-center items-center">
                         <img src="/img/headerIcon/berkemah-icon.jpg" alt="" class="h-6">
                         <span class="text-sm font-normal">{{ category.toLowerCase().split('-').join(' ') }}</span>
                     </NuxtLink>
@@ -17,14 +17,3 @@ const { data: data } = await useFetch('https://dummyjson.com/products/categories
         </div>
     </div>
 </template>
-
-<script>
-    export default {
-        props: {
-            dir: {
-                type: String,
-                default: "categories/"
-            }
-        }
-    }
-</script>
