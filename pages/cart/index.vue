@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:flex justify-center w-full hidden duration-1000 ">
+            <div class="lg:flex justify-end w-full hidden duration-1000 ">
                 <div class="flex bg-white rounded-lg h-fit shadow-lg border w-96 sticky top-0 p-4 py-6">
                     <div class="flex flex-col gap-6 w-full">
                         <div class="flex w-full">
@@ -233,7 +233,7 @@ export default {
                 this.allPrice = 0;
                 this.allQty = 0;
                 for (let i = 0; i < this.cartData.length; i++) {
-                    //ten accumulate
+                    //then accumulate
                     this.allPrice += this.cartData[i].price * this.cartData[i].qty;
                     this.allSubTotal += this.cartData[i].netPrice * this.cartData[i].qty;
                     this.allDiscount += this.allPrice - this.allSubTotal;
