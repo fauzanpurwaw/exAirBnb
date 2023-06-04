@@ -49,7 +49,7 @@ const { pending, data: data } = await useLazyFetch('https://dummyjson.com/produc
                             src="/svg/star.svg" alt="" class="h-4 mb-1 inline"></span></p>
                     </div>
                     <p class="h-fit overflow-y-scroll truncate text-slate-500">{{ product.description }}</p>
-                    <h2 class="flex justify-end w-full font-bold">$.{{ product.price }}</h2>
+                    <h2 class="flex justify-end w-full font-bold">{{ numberFormat(product.price) }}</h2>
                 </div>
             </div>
         </div>
@@ -92,3 +92,15 @@ const { pending, data: data } = await useLazyFetch('https://dummyjson.com/produc
     opacity: 1;
 }
 </style>
+<script>
+    export default {
+        methods: {
+            numberFormat(price) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            }).format(price)
+        }
+        }
+    }
+</script>

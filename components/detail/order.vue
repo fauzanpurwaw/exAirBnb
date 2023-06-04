@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white border border-gray-300 shadow-lg rounded-xl h-fit p-5 w-[372px] duration-1000 ">
         <div class="flex justify-between items-center">
-            <h1 class="text-lg font-medium">$.{{ price }} <span class="font-normal text-slate-700">/pcs</span>
+            <h1 class="text-lg font-medium">{{ numberFormat(price) }} <span class="font-normal text-slate-700">/pcs</span>
             </h1>
             <div class="flex gap-1 text-small">
                 <div class="flex items-center">
@@ -43,7 +43,7 @@
             class="active:scale-95 flex justify-center items-center rounded-lg bg-rose-500 h-12 cursor-pointer duration-100">
             <h1 class="text-white font-semibold">Buy now</h1>
         </div>
-        <div @click="addToCart(id, stockCounter)"
+        <div @click="addToCart(id, stockCounter), toggleAddcartStatus = true"
             class="active:scale-95 border border-rose-500 flex justify-center items-center rounded-lg mt-4 bg-whit h-12 cursor-pointer duration-100">
             <h1 class="text-rose-500 font-semibold">+add to cart</h1>
         </div>
@@ -53,10 +53,10 @@
         <div class="flex flex-col gap-4 mt-4 pb-6 border-gray-300 border-b">
             <div class="flex justify-between w-full">
                 <div class="text-slate-600 underline cursor-pointer" @click="togglePriceDetail()">
-                    $.{{ price }} x {{ stockCounter }} pcs
+                    {{ numberFormat(price) }} x {{ stockCounter }} pcs
                 </div>
                 <div>
-                    $.{{ price * stockCounter }}
+                    {{ numberFormat((price * stockCounter)) }}
                 </div>
             </div>
             <Transition>
@@ -87,7 +87,7 @@
                             Total Harga Dasar
                         </p>
                         <p>
-                            $.{{ price * stockCounter }}
+                            {{ numberFormat((price * stockCounter)) }}
                         </p>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     Biaya pengemasan
                 </div>
                 <div>
-                    $.{{ stockCounter == 0 ? 0 : cleaningPrice }}
+                    {{ stockCounter == 0 ? 0 : numberFormat(cleaningPrice) }}
                 </div>
             </div>
             <Transition>
@@ -130,7 +130,7 @@
                     </div>
                 </Transition>
                 <div>
-                    $.{{ stockCounter == 0 ? 0 : adminPrice }}
+                    {{ stockCounter == 0 ? 0 : numberFormat(adminPrice) }}
                 </div>
             </div>
         </div>
@@ -138,8 +138,39 @@
             <div>
                 Total sebelum pajak
             </div>
-            ${{ stockCounter == 0 ? 0 : (price * stockCounter) + cleaningPrice + adminPrice }}
+            ${{ stockCounter == 0 ? 0 : numberFormat(((price * stockCounter) + cleaningPrice + adminPrice)) }}
         </div>
+        <!-- modal -->
+        <Transition>
+            <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen"
+                v-show="toggleAddcartStatus">
+                <div class="flex absolute h-screen w-screen top-0 right-0 bg-slate-800 opacity-50 z-[1]"
+                    @click="toggleAddcartStatus = false"></div>
+                <div class="flex flex-col justify-between w-[400px] h-64 rounded-lg p-4 bg-white z-[2]">
+                    <div class="flex justify-end">
+                        <img src="/svg/close.svg" alt="" class="h-6 cursor-pointer hover:scale-105 active:scale-95"
+                            @click="toggleAddcartStatus = false">
+                    </div>
+                    <div class="flex flex-col items-center text-lg ">
+                        <div class="flex flex-col">
+                            <img src="/add.gif" alt="" class="w-24 -mt-16">
+                        </div>
+                        <div class="flex flex-col">
+                            successfully added to cart!
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <div class="flex">
+                            <div class="text-rose-500 hover:scale-105 active:scale-95 font-medium cursor-pointer">
+                                <NuxtLink to="/cart">
+                                    Go to cart
+                                </NuxtLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Transition>
     </div>
 </template>
 
@@ -169,6 +200,7 @@ export default {
     },
     data() {
         return {
+            toggleAddcartStatus: false,
             stockCounter: 1,
             openPriceDetail: false,
             openCleaninTax: false,
@@ -176,6 +208,7 @@ export default {
             cleaningPrice: 3.4,
             adminPrice: 11.1,
             openNote: false,
+            toggleAddcart: false
         }
     },
     methods: {
@@ -212,20 +245,22 @@ export default {
             console.log(this.stockCounter, stock);
         },
         async addToCart(id, qty) {
-            let { data: product }  = await useFetch('https://dummyjson.com/products/' + id);
-            let dataProduct        = product._rawValue;
-            dataProduct.qty        = qty;
+            let { data: product } = await useFetch('https://dummyjson.com/products/' + id);
+            let dataProduct = product._rawValue;
+            dataProduct.qty = qty;
             dataProduct.noteStatus = false;
+            dataProduct.netPrice = dataProduct.price - (dataProduct.discountPercentage / 100 * dataProduct.price);
 
             //if localStorage products didn't exist
             if (!localStorage.getItem("products")) {
                 let array = [];
                 dataProduct.cartId = 1;
-                dataProduct.subTotal = (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
+                dataProduct.subTotal = dataProduct.netPrice * dataProduct.qty;
                 array.push(dataProduct);
                 localStorage.setItem("products", JSON.stringify(array));
                 console.log(JSON.parse(localStorage.getItem("products")));
-            } 
+                // alert('produk telah ditambahkan ke dalam cart!');
+            }
             //if localStorage products is exist
             else {
                 //get all data from localStorage
@@ -238,31 +273,40 @@ export default {
                     }
                 }
                 console.log(listProductId);
-                
+
                 //check if the id already exists or not
                 if (!listProductId.includes(dataProduct.id)) {
                     //if not exist save to localStorage
-                    dataProduct.cartId   = productAtCart.length + 1;
-                    dataProduct.subTotal = (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
+                    dataProduct.cartId = productAtCart.length + 1;
+                    dataProduct.subTotal = dataProduct.netPrice * dataProduct.qty;
                     productAtCart.push(dataProduct);
                     localStorage.setItem("products", JSON.stringify(productAtCart));
                     console.log(JSON.parse(localStorage.getItem("products")));
                     console.log(listProductId);
+                    // alert('produk telah ditambahkan ke dalam cart!');
                 } else {
                     //if exist
                     //get data with the same id from localStorage
                     for (let j = 0; j < productAtCart.length; j++) {
                         //if data found
                         if (productAtCart[j].id === id) {
-                            productAtCart[j].subTotal += (this.price * this.stockCounter) + this.cleaningPrice + this.adminPrice;
-                            productAtCart[j].qty      += qty;
+                            productAtCart[j].subTotal += dataProduct.netPrice * dataProduct.qty;
+                            productAtCart[j].qty += qty;
                             localStorage.setItem("products", JSON.stringify(productAtCart));
                             console.log(JSON.parse(localStorage.getItem("products")));
+                            console.log(this.toggleAddcartStatus)
+                            // alert('produk telah ditambahkan ke dalam cart!');
                         }
                     }
                 }
                 console.log(JSON.parse(localStorage.getItem("products")));
             }
+        },
+        numberFormat(price) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            }).format(price)
         }
     },
     mounted() {
