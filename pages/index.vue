@@ -17,6 +17,9 @@ export default {
                 container: "container"
             },
         }
+    },
+    mounted() {
+        console.log(localStorage.getItem('user'))
     }
 }
 </script>

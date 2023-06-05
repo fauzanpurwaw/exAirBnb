@@ -84,28 +84,30 @@
                             <div
                                 class="border border-rose-500 cursor-pointer active:scale-95 duration-100 w-full h-fit rounded ">
                                 <div class="flex justify-between py-2">
-                                    <h1 class="text-slate-700 font-semibold ml-4">makin hemat pakai promo</h1>
+                                    <h1 class="text-slate-700 font-semibold ml-4">Save more using discount voucher</h1>
                                     <span><img src="/svg/chevronn-up.svg" alt="" class="inline h-6  rotate-90"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="flex flex-col pb-6 border-b border-slate-300">
-                            <h1 class="text-lg  font-semibold text-slate-950 py-1">Ringkasan belanja</h1>
+                            <h1 class="text-lg  font-semibold text-slate-950 py-1">Summary</h1>
                             <div class="flex justify-between">
-                                <h2 class="text-slate-600">Total harga (0 barang)</h2>
+                                <h2 class="text-slate-600">Total price (0 barang)</h2>
                                 <h2 class="text-slate-600">{{ numberFormat(allPrice) }}</h2>
                             </div>
                             <div class="flex justify-between">
-                                <h2 class="text-slate-600">Total diskon barang</h2>
+                                <h2 class="text-slate-600">Total discount</h2>
                                 <h2 class="text-slate-600">- {{ numberFormat(allDiscount) }}</h2>
                             </div>
                         </div>
                         <div class="flex justify-between">
-                            <h1 class="text-xl font-semibold">Total harga</h1>
+                            <h1 class="text-xl font-semibold">Sub total</h1>
                             <h1 class="text-xl font-semibold">{{ numberFormat(allSubTotal) }}</h1>
                         </div>
                         <button class="bg-rose-500 text-white font-bold rounded-lg text-xl py-4"
-                            :class="[allQty===0? 'bg-slate-300 cursor-default': '']">
+                            :class="[allQty===0? 'bg-slate-300': '']"
+                            :disabled="allQty===0"
+                            @click="checkOut()">
                             Check out ({{ allQty }})
                         </button>
                     </div>
@@ -114,6 +116,7 @@
         </div>
     </NuxtLayout>
     <Footer />
+    <!-- modal -->
     <Transition>
         <div class="flex fixed top-0 right-0 justify-center items-center w-screen h-screen z-[999]"
             v-show="toggleDeleteAll === true">
@@ -147,6 +150,47 @@
             </div>
         </div>
     </Transition>
+    <Transition>
+        <div class="fixed h-screen w-screen top-0 right-0 flex justify-center items-center z-[99]" v-show="toggleCheckout === true">
+            <div class="absolute h-screen w-screen z-[1] bg-black opacity-40" @click="toggleCheckout = false"></div>
+            <div class="flex justify-between flex-col bg-white w-[40%] z-[2] p-4 py-10 rounded-lg shadow-lg border border-slate-300" @click="toggleCheckout = false">
+                <img src="/svg/close.svg" alt="" class="h-6 w-6 hover:scale-105 cursor-pointer">
+                <div class="flex flex-col items-center py-4">
+                    <h1 class="text-3xl font-medium">Confirm your order</h1>
+                    <p>r u sure want to check out all from cart? </p>
+                </div>
+                <div class="flex justify-between mt-4 px-[15%]">
+                    <button class="text-rose-500 active:scale-95 duration-100" @click="toggleCheckout = false">
+                        no
+                    </button>
+                    <button class="active:scale-95 duration-100" @click="confirm()">
+                        yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </Transition>
+    <Transition>
+        <div class="fixed h-screen w-screen top-0 right-0 flex justify-center items-center z-[99]" v-show="toggleLogin === true">
+            <div class="absolute h-screen w-screen top-0 right-0 z-[1] bg-black opacity-40" @click="toggleLogin = false"></div>
+            <div class="flex justify-between flex-col bg-white w-[40%] z-[2] p-4 py-10 rounded-lg shadow-lg border border-slate-300" @click="toggleLogin = false">
+                <img src="/svg/close.svg" alt="" class="h-6 w-6 hover:scale-105 cursor-pointer">
+                <div class="flex flex-col items-center py-4">
+                    <h1 class="text-3xl font-medium">Login to confirm your order</h1>
+                </div>
+                <div class="flex justify-between mt-4 px-[15%]">
+                    <button class="text-rose-500 active:scale-95 duration-100" @click="toggleLogin = false">
+                        no
+                    </button>
+                    <NuxtLink to="/login">
+                        <button class="active:scale-95 duration-100">
+                            Login
+                        </button>
+                    </NuxtLink>
+                </div>
+            </div>
+        </div>
+    </Transition>
 </template>
 
 <script>
@@ -163,7 +207,9 @@ export default {
             allDiscount: 0,
             allPrice: 0,
             allQty: 0,
-            toggleDeleteAll: false
+            toggleDeleteAll: false,
+            toggleCheckout: false,
+            toggleLogin: false,
         }
     },
     methods: {
@@ -258,6 +304,20 @@ export default {
                 style: 'currency',
                 currency: 'USD',
             }).format(price)
+        },
+        checkOut() {
+            if ( localStorage.getItem('user') ) {
+                this.toggleCheckout = true;
+            } else {
+                this.toggleLogin = true;
+            }
+        },
+        confirm() {
+            this.cartData = [];
+            localStorage.removeItem("products");
+            this.toggleCheckout = false;
+            this.getCartData();
+            alert('check out success');
         }
     },
     mounted() {

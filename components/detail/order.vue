@@ -39,10 +39,12 @@
             <input type="text" id="note" name="note" placeholder="Contoh: warna putih, ukurann Xl"
                 class="ring-1 ring-rose-500 h-8 rounded-lg w-64 text-slate-800 px-2" v-show="openNote">
         </div>
-        <div
-            class="active:scale-95 flex justify-center items-center rounded-lg bg-rose-500 h-12 cursor-pointer duration-100">
-            <h1 class="text-white font-semibold">Buy now</h1>
-        </div>
+        <NuxtLink :to="'/detail/summary/'+id+'?qty='+stockCounter">
+            <div
+                class="active:scale-95 flex justify-center items-center rounded-lg bg-rose-500 h-12 cursor-pointer duration-100">
+                <h1 class="text-white font-semibold">Buy now</h1>
+            </div>
+        </NuxtLink>
         <div @click="addToCart(id, stockCounter), toggleAddcartStatus = true"
             class="active:scale-95 border border-rose-500 flex justify-center items-center rounded-lg mt-4 bg-whit h-12 cursor-pointer duration-100">
             <h1 class="text-rose-500 font-semibold">+add to cart</h1>

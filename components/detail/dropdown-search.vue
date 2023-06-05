@@ -62,7 +62,7 @@
                             <NuxtLink :to="'../detail/' + product.id">
                                 <div class="flex items-center w-full border-b px-2 py-2 hover:cursor-pointer hover:bg-rose-100 rounded mt-2"
                                     id="list">
-                                    <img src="/svg/user.svg" alt="" class="h-5">
+                                    <img :src="product.thumbnail" alt="" class="h-8 w-8">
                                     <p id="listItem" class="text-[12px] text-slate-500 mx-2">{{ product.title }} - {{
                                         product.brand }} - {{ product.category }}</p>
                                 </div>

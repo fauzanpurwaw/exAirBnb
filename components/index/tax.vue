@@ -1,11 +1,11 @@
 <template>
     <div class="flex justify-center w-full h-fit my-6">
-        <div class="flex justify-between items-center min-w-[480px] sm:w-[50%] w-full bg-white rounded-full p-4 px-8 border border=slate-500">
+        <div class="flex justify-between items-center min-w-[480px] sm:w-[500px] w-full bg-white rounded-full p-4 px-8 border border=slate-500">
             <div class="flex">
-                <div class="flex font-semibold pr-4 border-r border-slate-400">
+                <div class="flex sm:text-base text-sm font-semibold pr-4 border-r border-slate-400">
                     Display total price
                 </div>
-                <div class="flex pl-4 text-slate-500">
+                <div class="flex sm:text-base text-sm pl-4 text-slate-500">
                     Includes all fees, before taxes
                 </div>
             </div>
