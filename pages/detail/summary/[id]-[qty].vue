@@ -205,10 +205,14 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
             </div>
         </div>
         <div class="flex w-screen h-screen top-0 right-0 fixed justify-center items-center" v-show="showSuccess == true">
-            <div class="h-screen w-screen top-0 right-0 bg-black opacity-40 absolute z-[1]" @click="showSuccess = false">
-            </div>
+            <NuxtLink to="/" class="cursor-default">
+                <div class="h-screen w-screen top-0 right-0 bg-black opacity-40 absolute z-[1]" @click="showSuccess = false">
+                </div>
+            </NuxtLink>
             <div class="bg-white w-80 rounded-lg shadow-lg z-[2] p-4">
-                <img src="/svg/close.svg" alt="" class="h-6 hover:scale-105 cursor-pointer" @click="showSuccess = false">
+                <NuxtLink to="/">
+                    <img src="/svg/close.svg" alt="" class="h-6 hover:scale-105 cursor-pointer" @click="showSuccess = false">
+                </NuxtLink>
                 <div class="flex items-center flex-col py-4">
                     <img src="/add.gif" alt="">
                     <h1 class="text-xl font-semibold py-2">Order success!</h1>
