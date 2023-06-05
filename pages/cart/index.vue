@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:flex justify-end w-full hidden duration-1000 ">
+            <div class="lg:flex justify-end w-full duration-1000 ">
                 <div class="flex bg-white rounded-lg h-fit shadow-lg border w-96 sticky top-0 p-4 py-6">
                     <div class="flex flex-col gap-6 w-full">
                         <div class="flex w-full">
