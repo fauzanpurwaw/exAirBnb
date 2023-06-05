@@ -39,7 +39,7 @@
             <input type="text" id="note" name="note" placeholder="Contoh: warna putih, ukurann Xl"
                 class="ring-1 ring-rose-500 h-8 rounded-lg w-64 text-slate-800 px-2" v-show="openNote">
         </div>
-        <NuxtLink :to="'/detail/summary/'+id+'?qty='+stockCounter">
+        <NuxtLink :to="'/detail/summary/'+id+'-'+stockCounter">
             <div
                 class="active:scale-95 flex justify-center items-center rounded-lg bg-rose-500 h-12 cursor-pointer duration-100">
                 <h1 class="text-white font-semibold">Buy now</h1>
