@@ -20,7 +20,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                     <div class="flex flex-col">
                         <div class="flex w-full justify-between items-center">
                             <h1 class="text-lg font-semibold">discount</h1>
-                            <h1>{{ numberFormat(data.price - (data.discountPercentage/100*data.price)) }}</h1>
+                            <h1>{{ numberFormat(data.price - (data.price - (data.discountPercentage/100*data.price))) }}</h1>
                         </div>
                     </div>
                     <div class="flex flex-col pb-8 border-b border-slate-300">
@@ -42,7 +42,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                                             <div class="h-2 w-2 bg-white border rounded-full cursor-pointer"></div>
                                         </div>
                                     </div>
-                                    <p class="text-slate-600 w-[90%]">Pay the total ({{ numberFormat(data.price*qty - (data.price - (data.discountPercentage/100*data.price))) }}) now and you're all
+                                    <p class="text-slate-600 w-[90%]">Pay the total ({{ numberFormat((data.price*qty - (data.price - (data.price - (data.discountPercentage/100*data.price)*qty)))) }}) now and you're all
                                         set.</p>
                                 </div>
                                 <div class="flex flex-col gap-1 border border-slate-300 rounded-t-lg p-4"
@@ -53,7 +53,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                                             <div class="h-6 w-6 bg-white border rounded-full cursor-pointer"></div>
                                         </div>
                                     </div>
-                                    <p class="text-slate-600 w-[90%]">Pay the total ({{ numberFormat(data.price*qty - (data.price - (data.discountPercentage/100*data.price))) }}) now and you're all
+                                    <p class="text-slate-600 w-[90%]">Pay the total ({{ numberFormat((data.price*qty - (data.price - (data.price - (data.discountPercentage/100*data.price)*qty)))) }}) now and you're all
                                         set.</p>
                                 </div>
                                 <!-- later pay -->
@@ -65,7 +65,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                                             <div class="h-2 w-2 bg-white border rounded-full cursor-pointer"></div>
                                         </div>
                                     </div>
-                                    <p class="text-slate-600 w-[90%]">{{ numberFormat((data.price*qty - (data.price - (data.discountPercentage/100*data.price)))/2) }} due today, {{ numberFormat((data.price*qty - (data.price - (data.discountPercentage/100*data.price)))/2) }} on Jun 30,
+                                    <p class="text-slate-600 w-[90%]">{{ numberFormat( (data.price*qty - (data.price - (data.price - (data.discountPercentage/100*data.price)*qty))) / 2) }} due today, {{ numberFormat( (data.price*qty - (data.price - (data.price - (data.discountPercentage/100*data.price)*qty))) / 2) }} on Jun 30,
                                         2023. No extra fees. <span class="text-slate-800 font-medium underline">More
                                             info.</span></p>
                                 </div>
@@ -77,7 +77,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                                             <div class="h-6 w-6 bg-white border rounded-full cursor-pointer"></div>
                                         </div>
                                     </div>
-                                    <p class="text-slate-600 w-[90%]">{{ numberFormat((data.price*qty - (data.price - (data.discountPercentage/100*data.price)))/2) }} due today, {{ numberFormat((data.price*qty - (data.price - (data.discountPercentage/100*data.price)))/2) }} on Jun 30,
+                                    <p class="text-slate-600 w-[90%]">{{ numberFormat( (data.price*qty - (data.price - (data.price - (data.discountPercentage/100*data.price)*qty))) / 2) }} due today, {{ numberFormat( (data.price*qty - (data.price - (data.price - (data.discountPercentage/100*data.price)*qty))) / 2) }} on Jun 30,
                                         2023. No extra fees. <span class="text-slate-800 font-medium underline">More
                                             info.</span></p>
                                 </div>
@@ -180,7 +180,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                             </div>
                             <div class="flex justify-between">
                                 <h1 class="underline cursor-pointer ">Total discount</h1>
-                                <h1>{{ numberFormat((-(data.price - (data.discountPercentage/100*data.price)))) }}</h1>
+                                <h1>{{ numberFormat((-(data.price - (data.price - (data.discountPercentage/100*data.price)))*qty)) }}</h1>
                             </div>
                             <div class="flex justify-between">
                                 <h1 class="underline cursor-pointer ">Airbnb service fee</h1>
@@ -195,7 +195,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                     <div class="flex w-full">
                         <div class="flex w-full justify-between text-lg font-semibold">
                             <h1>Total (USD)</h1>
-                            <h1>{{ numberFormat(data.price*qty - (data.price - (data.discountPercentage/100*data.price)) + 3.4 + 11.1) }}</h1>
+                            <h1>{{ numberFormat((data.price*qty)+(-(data.price - (data.price - (data.discountPercentage/100*data.price)))*qty)+3.4+11.1) }}</h1>
                         </div>
                     </div>
                     <div class="flex justify-center text-lg font-medium text-white bg-rose-500 rounded-lg py-4 cursor-pointer active:scale-95 duration-100" @click="showSuccess = true" v-show="auth==true">
