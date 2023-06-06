@@ -475,16 +475,20 @@ export default {
         },
         chekout() {
             if  ( this.payMethod.full === true || this.payMethod.later === true ) {
-                for ( let i=0; i<this.cartData.length; i++ ) {
-                    if ( this.checked.id.includes(this.cartData[i].id) ) {
-                        for (let j=0; j<this.checked.id.length; j++) {
-                            if (this.checked.id[j] == this.cartData[i].id) {
-                                this.cartData.splice(i,1);
-                                localStorage.setItem("products", JSON.stringify(this.cartData));
+                if ( !this.checked.id.length == 0 ) {
+                    for ( let i=0; i<this.cartData.length; i++ ) {
+                        if ( this.checked.id.includes(this.cartData[i].id) ) {
+                            for (let j=0; j<this.checked.id.length; j++) {
+                                if (this.checked.id[j] == this.cartData[i].id) {
+                                    this.cartData.splice(i,1);
+                                    localStorage.setItem("products", JSON.stringify(this.cartData));
+                                }
                             }
                         }
+                        this.showSuccess = true;
                     }
-                    this.showSuccess = true;
+                } else {
+                    alert("please check whih want you want to buy!");
                 }
             } else {
                 alert("please choose how you will pay!");
