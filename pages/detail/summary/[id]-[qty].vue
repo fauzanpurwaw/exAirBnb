@@ -7,15 +7,15 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
 <template>
     <DetailHeader />
     <NuxtLayout :name="layouts.container">
-        <div class="flex justify-between gap-16 w-full py-20">
+        <div class="flex sm:flex-row flex-col-reverse justify-between gap-16 w-full py-20">
             <div class="flex flex-col gap-8 w-full">
-                <div class="flex gap-8 items-center">
+                <div class="gap-8 items-center hidden lg:flex">
                     <NuxtLink :to="'/detail/'+id">
                         <span><img src="/svg/chevronn-up.svg" alt="" class="h-6 inline -rotate-90"></span>
                     </NuxtLink>
                     <h1 class="text-3xl font-semibold">Submit order</h1>
                 </div>
-                <div class="flex flex-col gap-4 pl-14">
+                <div class="flex flex-col gap-4 lg:pl-14">
                     <h1 class="text-2xl font-semibold">Perjalanan anda</h1>
                     <div class="flex flex-col">
                         <div class="flex w-full justify-between items-center">
@@ -157,7 +157,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                 </div>
             </div>
             <div class="flex w-full justify-center">
-                <div class="flex gap-6 flex-col w-[70%] h-fit sticky top-32 rounded-lg border shadow p-4">
+                <div class="flex gap-6 flex-col lg:w-[70%] w-full h-fit sticky top-32 rounded-lg border shadow p-4">
                     <div class="flex gap-2 w-full pb-6 border-b border-slate-300">
                         <img :src="data.thumbnail" alt="" class="h-28 w-32 object-cover aspect-square rounded-lg">
                         <div class="flex flex-col justify-between">

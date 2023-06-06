@@ -38,7 +38,8 @@
                                         <span
                                             class="text-[12px] bg-rose-700 rounded text-white font-semibold px-2 text-center w-fit">{{
                                                 cartProduct.discountPercentage }}%</span>
-                                        <span class="px-1 text-sm text-slate-500"><del>{{ numberFormat(cartProduct.price) }}</del></span>
+                                        <span class="px-1 text-sm text-slate-500"><del>{{ numberFormat(cartProduct.price)
+                                        }}</del></span>
                                         <span class="font-semibold">${{ cartProduct.netPrice }}</span>
                                     </div>
                                     <div class="flex items-center">
@@ -77,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:flex justify-end w-full duration-1000 ">
+            <div class="sm:flex justify-end w-full duration-1000 hidden">
                 <div class="flex bg-white rounded-lg h-fit shadow-lg border w-96 sticky top-0 p-4 py-6">
                     <div class="flex flex-col gap-6 w-full">
                         <div class="flex w-full">
@@ -105,12 +106,22 @@
                             <h1 class="text-xl font-semibold">{{ numberFormat(allSubTotal) }}</h1>
                         </div>
                         <button class="bg-rose-500 text-white font-bold rounded-lg text-xl py-4"
-                            :class="[allQty===0? 'bg-slate-300': '']"
-                            :disabled="allQty===0"
-                            @click="checkOut()">
+                            :class="[allQty === 0 ? 'bg-slate-300' : '']" :disabled="allQty === 0" @click="checkOut()">
                             Check out ({{ allQty }})
                         </button>
                     </div>
+                </div>
+            </div>
+            <div class="lg:hidden flex fixed bottom-0 h-16 w-full bg-white border-t border-slate-300 p-1">
+                <div class="flex w-full items-center justify-between">
+                    <div class="flex justify-between">
+                        <h1 class="text-lg font-semibold mr-2">Sub total: </h1>
+                        <h1 class="text-xl font-semibold">{{ numberFormat(allSubTotal) }}</h1>
+                    </div>
+                    <button class="flex items-center bg-rose-500 text-white font-bold rounded-lg text-xl px-1 py-4"
+                        :class="[allQty === 0 ? 'bg-slate-300' : '']" :disabled="allQty === 0" @click="checkOut()">
+                        Check out ({{ allQty }})
+                    </button>
                 </div>
             </div>
         </div>
@@ -151,9 +162,11 @@
         </div>
     </Transition>
     <Transition>
-        <div class="fixed h-screen w-screen top-0 right-0 flex justify-center items-center z-[99]" v-show="toggleCheckout === true">
+        <div class="fixed h-screen w-screen top-0 right-0 flex justify-center items-center z-[99]"
+            v-show="toggleCheckout === true">
             <div class="absolute h-screen w-screen z-[1] bg-black opacity-40" @click="toggleCheckout = false"></div>
-            <div class="flex justify-between flex-col bg-white w-[40%] z-[2] p-4 py-10 rounded-lg shadow-lg border border-slate-300" @click="toggleCheckout = false">
+            <div class="flex justify-between flex-col bg-white w-[40%] z-[2] p-4 py-10 rounded-lg shadow-lg border border-slate-300"
+                @click="toggleCheckout = false">
                 <img src="/svg/close.svg" alt="" class="h-6 w-6 hover:scale-105 cursor-pointer">
                 <div class="flex flex-col items-center py-4">
                     <h1 class="text-3xl font-medium">Confirm your order</h1>
@@ -171,9 +184,12 @@
         </div>
     </Transition>
     <Transition>
-        <div class="fixed h-screen w-screen top-0 right-0 flex justify-center items-center z-[99]" v-show="toggleLogin === true">
-            <div class="absolute h-screen w-screen top-0 right-0 z-[1] bg-black opacity-40" @click="toggleLogin = false"></div>
-            <div class="flex justify-between flex-col bg-white w-[40%] z-[2] p-4 py-10 rounded-lg shadow-lg border border-slate-300" @click="toggleLogin = false">
+        <div class="fixed h-screen w-screen top-0 right-0 flex justify-center items-center z-[99]"
+            v-show="toggleLogin === true">
+            <div class="absolute h-screen w-screen top-0 right-0 z-[1] bg-black opacity-40" @click="toggleLogin = false">
+            </div>
+            <div class="flex justify-between flex-col bg-white w-[40%] z-[2] p-4 py-10 rounded-lg shadow-lg border border-slate-300"
+                @click="toggleLogin = false">
                 <img src="/svg/close.svg" alt="" class="h-6 w-6 hover:scale-105 cursor-pointer">
                 <div class="flex flex-col items-center py-4">
                     <h1 class="text-3xl font-medium">Login to confirm your order</h1>
@@ -306,7 +322,7 @@ export default {
             }).format(price)
         },
         checkOut() {
-            if ( localStorage.getItem('user') ) {
+            if (localStorage.getItem('user')) {
                 window.location.href = '/cart/summary';
             } else {
                 this.toggleLogin = true;

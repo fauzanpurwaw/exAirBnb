@@ -7,16 +7,16 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
 <template>
     <DetailHeader />
     <NuxtLayout :name="layouts.container">
-        <div class="flex justify-between gap-16 w-full py-20">
+        <div class="flex lg:flex-row flex-col-reverse justify-between gap-16 w-full py-20">
             <div class="flex flex-col gap-8 w-full">
-                <div class="flex gap-8 items-center">
+                <div class="lg:flex gap-8 items-center hidden">
                     <NuxtLink :to="'/detail/' + id">
                         <span><img src="/svg/chevronn-up.svg" alt="" class="h-6 inline -rotate-90"></span>
                     </NuxtLink>
                     <h1 class="text-3xl font-semibold">Submit order</h1>
                 </div>
-                <div class="flex flex-col gap-4 pl-14">
-                    <div class="flex justify-between py-2">
+                <div class="flex flex-col gap-4 lg:pl-14">
+                    <div class="flex justify-between py-4">
                         <h1 class="text-xl font-semibold">Check your list here</h1>
                         <div class="flex w-fit items-center gap-2 cursor-pointer active:scale-95 text-lg font-medium" @click="checkAll()">
                             Check all
@@ -237,7 +237,7 @@ const { data: data } = await useFetch('https://dummyjson.com/products/' + id);
                 </div>
             </div>
             <div class="flex w-full justify-center">
-                <div class="flex gap-6 flex-col w-[70%] h-fit sticky top-32 rounded-lg border shadow p-4">
+                <div class="flex gap-6 flex-col lg:w-[70%] w-full h-fit sticky top-32 rounded-lg border shadow p-4">
                     <div class="flex flex-col gap-4 w-full pb-6 border-b border-slate-300">
                         <h1 class="text-2xl font-medium">Price details</h1>
                         <div class="flex gap-3 flex-col text-slate-600">
@@ -350,10 +350,6 @@ export default {
                 currency: 'USD',
             }).format(price)
         },
-        login() {
-            localStorage.setItem('user', this.username);
-            this.auth = true;
-        },
         checkAuth() {
             const user = localStorage.getItem('user');
             if (user) {
@@ -371,34 +367,6 @@ export default {
                 console.log(this.cartData)
             }
             this.setTotal();
-        },
-        newSetTotal() {
-            if (!this.cartData.length == 0) {
-                //set to 0
-                this.allSubTotal = 0;
-                this.allDiscount = 0;
-                this.allPrice = 0;
-                this.allQty = 0;
-                for (let i = 0; i < this.checked.id.length; i++) {
-                    //then accumulate
-                    this.allPrice += this.cartData[i].price * this.cartData[i].qty;
-                    this.allSubTotal += this.cartData[i].netPrice * this.cartData[i].qty;
-                    this.allDiscount += this.allPrice - this.allSubTotal;
-                    this.allQty += this.cartData[i].qty;
-                    console.log(this.allPrice);
-                    console.log(this.allSubTotal);
-                    console.log(this.allDiscount);
-                }
-            } else {
-                this.allSubTotal = 0;
-                this.allDiscount = 0;
-                this.allPrice = 0;
-                this.allQty = 0;
-                console.log(this.allPrice);
-                console.log(this.allSubTotal);
-                console.log(this.allDiscount);
-                console.log(this.allQty);
-            }
         },
         setTotal() {
             if (!this.checked.id.length == 0) {
