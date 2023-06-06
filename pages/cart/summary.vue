@@ -474,8 +474,8 @@ export default {
             this.getCartData();
         },
         chekout() {
+            if ( !this.checked.id.length == 0 ) {
             if  ( this.payMethod.full === true || this.payMethod.later === true ) {
-                if ( !this.checked.id.length == 0 ) {
                     for ( let i=0; i<this.cartData.length; i++ ) {
                         if ( this.checked.id.includes(this.cartData[i].id) ) {
                             for (let j=0; j<this.checked.id.length; j++) {
