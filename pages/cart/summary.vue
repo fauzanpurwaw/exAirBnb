@@ -488,10 +488,10 @@ export default {
                         this.showSuccess = true;
                     }
                 } else {
-                    alert("please check whih want you want to buy!");
+                    alert("please choose how you will pay!");
                 }
             } else {
-                alert("please choose how you will pay!");
+                alert("please check whih want you want to buy!");
             }
         }
     },
