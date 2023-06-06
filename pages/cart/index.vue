@@ -307,7 +307,7 @@ export default {
         },
         checkOut() {
             if ( localStorage.getItem('user') ) {
-                this.toggleCheckout = true;
+                window.location.href = '/cart/summary';
             } else {
                 this.toggleLogin = true;
             }

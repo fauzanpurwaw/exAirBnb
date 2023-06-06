@@ -140,7 +140,7 @@
             <div>
                 Total sebelum pajak
             </div>
-            ${{ stockCounter == 0 ? 0 : numberFormat(((price * stockCounter) + cleaningPrice + adminPrice)) }}
+            {{ stockCounter == 0 ? 0 : numberFormat(((price * stockCounter) + cleaningPrice + adminPrice)) }}
         </div>
         <!-- modal -->
         <Transition>
